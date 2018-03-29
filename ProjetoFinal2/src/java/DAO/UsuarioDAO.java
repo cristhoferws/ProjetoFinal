@@ -62,17 +62,16 @@ public class UsuarioDAO {
         return usuario;
     }
     
-    public List<Usuario> buscar(String nome) {
+    public Usuario buscar(String nome) {
         em = JPAUtil.getEntityManager();
         TypedQuery<Usuario> query = em.createQuery(
                 "SELECT p FROM Usuario p "
-                + "where lower(p.nome) like '%"
-                + nome.toLowerCase() + "%'",
+                        + "where lower(p.nome) like '%"
+                        + nome.toLowerCase() + "%'",
                 Usuario.class);
         List<Usuario> usuarios = query.getResultList();
         em.close();
-        return usuarios;
+        return usuarios.get(0);
     }
-    
-    
+   
 }

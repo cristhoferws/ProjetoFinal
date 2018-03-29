@@ -9,6 +9,7 @@ package Testes;
 import Classes.Usuario;
 import DAO.UsuarioDAO;
 import static Classes.NivelAcesso.ADMINISTRADOR;
+import static Classes.NivelAcesso.USUARIO;
 
 /**
  *
@@ -23,7 +24,7 @@ public class TesteUsuarioDAO {
         
         UsuarioDAO objDAO = new UsuarioDAO();
         
-        objDAO.salvar(new Usuario("Cristhofer", "123", ADMINISTRADOR));
+        objDAO.salvar(new Usuario("Joao", "102030", USUARIO));
         
         
         System.out.print("Salvo");

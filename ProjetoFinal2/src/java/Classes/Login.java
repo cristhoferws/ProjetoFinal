@@ -19,15 +19,17 @@ import javax.faces.bean.ManagedBean;
 @SessionScoped
 public class Login implements Serializable{
     
+    
+    private static final long serialVersionUID = 1L;
+    
     private String username;
     
     private String password;
-        
-    private UsuarioDAO userDao;
     
     private Usuario autenticado;
 
-    
+    public Login() {
+    }
     
     public Usuario getAutenticado() {
         return autenticado;
@@ -54,20 +56,21 @@ public class Login implements Serializable{
         this.password = password;
     }
     
+    UsuarioDAO user = new UsuarioDAO();
     
     public String autenticar(){
         
       
-        autenticado = (Usuario) userDao.buscar(username);
+      autenticado = user.buscar(username);
         
         
         
-        if(autenticado!=null){ 
+        if(autenticado !=null){ 
             if(autenticado.getSenha().equals(password))
-                return "layout.xhtml?faces-redirect=true";
+                return "home";
         }
         
-        return null;
+        return "invalido";
         
     }
     

@@ -107,7 +107,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "Classes.Usuario[ id=" + id + " nome= " + nome + " Nivel de Acesso= " + nivel +" ]";
+        return "Classes.Usuario[ id=" + id + " nome= " + nome + " Nivel de Acesso= " + nivel + "senha" + senha + " ]";
     }
     
 }
