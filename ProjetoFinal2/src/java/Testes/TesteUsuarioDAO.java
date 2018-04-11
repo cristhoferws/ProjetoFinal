@@ -6,10 +6,14 @@
 package Testes;
 
 
+import Classes.Incidente;
 import Classes.Usuario;
 import DAO.UsuarioDAO;
-import static Classes.NivelAcesso.ADMINISTRADOR;
-import static Classes.NivelAcesso.USUARIO;
+
+import static Classes.NivelAcesso.*;
+import static Classes.Status.*;
+import DAO.IncidenteDAO;
+import java.util.Date;
 
 /**
  *
@@ -24,13 +28,25 @@ public class TesteUsuarioDAO {
         
         UsuarioDAO objDAO = new UsuarioDAO();
         
-        objDAO.salvar(new Usuario("Joao", "102030", USUARIO));
+        objDAO.salvar(new Usuario("Carlos Alberto", "102030", USUARIO));
+        
+        
+        
         
         
         System.out.print("Salvo");
         
         for (Usuario u : objDAO.buscarTodos())
             System.out.println(u.toString());
+        
+        
+        Date data = new Date();
+        
+        IncidenteDAO incDAO = new IncidenteDAO();
+        
+        incDAO.salvar(new Incidente("Impressora não imprime", "Impressora exibe mensagem de erro ao imprimir", "João de Deus","Fazenda","Administrativo",36007148,850990,data,NOVO ));
+       
+        
         
         
         

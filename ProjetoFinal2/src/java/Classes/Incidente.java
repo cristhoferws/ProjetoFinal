@@ -5,8 +5,11 @@
  */
 package Classes;
 
+import DAO.IncidenteDAO;
 import java.io.Serializable;
 import java.util.Date;
+import javax.enterprise.context.SessionScoped;
+import javax.faces.bean.ManagedBean;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -22,6 +25,8 @@ import javax.persistence.TemporalType;
  * @author Cristhofer
  */
 @Entity
+@ManagedBean( name="incidente")
+@SessionScoped
 public class Incidente implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -38,16 +43,16 @@ public class Incidente implements Serializable {
     @Column(name="contato", columnDefinition = "text", length = 50)
     private String contato;
      
-    @Column(name="secretaria", columnDefinition = "text", length = 20)
+    @Column(name="secretaria", columnDefinition = "text", length = 50)
     private String secretaria;
     
-    @Column(name="setor", columnDefinition = "text", length = 20)
+    @Column(name="setor", columnDefinition = "text", length = 50)
     private String setor;
     
-    @Column(name="telefone", columnDefinition = "text", length = 25)
+    @Column
     private int telefone;
      
-    @Column(name="patrimonio", columnDefinition = "text", length = 20)
+    @Column
     private int patrimonio;
     
     @Temporal(TemporalType.DATE)
@@ -56,8 +61,14 @@ public class Incidente implements Serializable {
     @Enumerated(EnumType.ORDINAL)
     private Status situacao;
 
+   
     
+            
     public Incidente(){}
+    
+    public Incidente(String problema){
+        this.problema = problema;
+    }
     
     public Incidente(String problema, String descricao, String contato, String secretaria, String setor, int telefone, int patrimonio, Date dataAbertura, Status situacao) {
         this.problema = problema;
@@ -154,11 +165,17 @@ public class Incidente implements Serializable {
     public void setSituacao(Status situacao) {
         this.situacao = situacao;
     }
+   
+    /*
+   IncidenteDAO incDAO = new IncidenteDAO();
+   
     
+    public void gravar(){
+        
+        incDAO.salvar(new Incidente(problema));
+    }
     
-    
-    
-
+    */
 
     @Override
     public int hashCode() {

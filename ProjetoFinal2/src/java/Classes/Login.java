@@ -70,7 +70,7 @@ public class Login implements Serializable{
                 return "home";
         }
         
-        return "invalido";
+        return "index";
         
     }
     

@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="layout.xhtml">
+            <ui:define name="corpo">
+                
+                <h:form id="recurso-form">  
+                    
+                    <div class="row">
+                        <div class="input-field col s6">
+                        <h:outputLabel for="tipo">Tipo</h:outputLabel>  
+                         <h:inputText id="tipo" value="#{recurso.tipo}" required="true" requiredMessage="Username is required"/><br/>
+                        
+                        </div>
+                    </div>   
+                    
+                    <div class="row">
+                        <div class="input-field col s6">
+                        <h:outputLabel for="especificacoes">Especificações</h:outputLabel>  
+                         <h:inputText id="especificacoes" value="#{recurso.especificacoes}" required="true" requiredMessage="Username is required"/><br/>
+                        
+                        </div>
+                    </div>    
+               
+                    <div class="row">
+                        <div class="input-field col s6">
+                        <h:outputLabel for="secretaria">Secretaria</h:outputLabel>  
+                         <h:inputText id="secretaria" value="#{recurso.secretaria}" required="true" requiredMessage="Username is required"/><br/>
+                        
+                        </div>
+                    </div>    
+               
+                    <div class="row">
+                        <div class="input-field col s6">
+                        <h:outputLabel for="setor">Setor</h:outputLabel>  
+                         <h:inputText id="setor" value="#{recurso.setor}" required="true" requiredMessage="Username is required"/><br/>
+                        
+                        </div>
+                    </div>    
+               
+                    <div class="row">
+                        <div class="input-field col s6">
+                        <h:outputLabel for="patrimonio">Patrimônio</h:outputLabel>  
+                         <h:inputText id="patrimonio" value="#{recurso.patrimonio}" required="true" requiredMessage="Username is required"/><br/>
+                        
+                        </div>
+                    </div>    
+               
+                    <div class="row">
+                        <div class="input-field col s6">
+                        <h:outputLabel for="numSerie">Número de Série</h:outputLabel>  
+                         <h:inputText id="numSerie" value="#{recurso.numSerie}" required="usernametrue" requiredMessage="Username is required"/><br/>
+                        
+                        </div>
+                    </div>   
+                    
+                    <div class="row">
+                        <div class="input-field col s6">
+                        <h:outputLabel for="etiqueta">Etiqueta</h:outputLabel>  
+                         <h:inputText id="etiqueta" value="#{recurso.etiqueta}" required="usernametrue" requiredMessage="Username is required"/><br/>
+                        
+                        </div>
+                    </div>    
+               
+               
+                    <button>
+                <h:commandButton value="submit" type="submit" action="#{recursoDAO.salvar(recurso)}" />
+                
+                    </button>
+                </h:form>  
+                
+                
+            </ui:define>
+            
+            
+        </ui:composition>
+    </h:body>
+</html>
+

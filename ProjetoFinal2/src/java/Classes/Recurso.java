@@ -6,6 +6,7 @@
 package Classes;
 
 import java.io.Serializable;
+import javax.faces.bean.ManagedBean;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,6 +18,7 @@ import javax.persistence.Id;
  * @author Cristhofer
  */
 @Entity
+@ManagedBean(name="recurso")
 public class Recurso implements Serializable {
 
     private static final long serialVersionUID = 1L;
