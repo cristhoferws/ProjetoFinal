@@ -5,19 +5,20 @@
  */
 package DAO;
 
-import Classes.Usuario;
+import Model.Usuario;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
 /**
  *
  * @author Cristhofer
  */
-public class UsuarioDAO {
+public class UsuarioDAO extends BaseDAO<Usuario> {
     
-    private EntityManager em;
-
+   private EntityManager em;
+/*
     public UsuarioDAO() {}
 
     public void salvar(Usuario usuario) {
@@ -61,7 +62,7 @@ public class UsuarioDAO {
         em.close();
         return usuario;
     }
-    
+    */
     public Usuario buscar(String nome) {
         em = JPAUtil.getEntityManager();
         TypedQuery<Usuario> query = em.createQuery(
@@ -73,5 +74,20 @@ public class UsuarioDAO {
         em.close();
         return usuarios.get(0);
     }
+    
+     public Usuario getUsuario(String nomeUsuario, String senha) {
+                    em = JPAUtil.getEntityManager();
+              try {
+                    Usuario usuario = (Usuario) em
+                               .createQuery(
+                                           "SELECT u from Usuario u where u.nome = :nome and u.senha = :senha")
+                               .setParameter("nome", nomeUsuario)
+                               .setParameter("senha", senha).getSingleResult();
+   
+                    return usuario;
+              } catch (NoResultException e) {
+                    return null;
+              }
+        }
    
 }

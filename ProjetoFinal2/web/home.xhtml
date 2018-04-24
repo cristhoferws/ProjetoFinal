@@ -3,73 +3,94 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    
     <h:head>
-        <title>Facelet Title</title>
+  
     </h:head>
     <h:body>
         <ui:composition template="layout.xhtml">
             
             <ui:define name="corpo">
+               
+                <h:form id="form">        
+        <p:dataGrid var="inc" value="#{incidenteBean.incidentes}" columns="3" layout="grid"
+        rows="6" paginator="true" id="incid"
+        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+        rowsPerPageTemplate="6,12,16">
+ 
+        <f:facet name="header">
+            Incidentes
+        </f:facet>
+          
+        <p:panel header="#{inc.id}" style="text-align:center">
+            <h:panelGrid columns="1" style="width:100%">
                 
-                <div class="row">
-                <div class="col s12">
-                <p:dataTable var="incidente" value="#{incidenteDAO.buscarTodos()}">
-                    <p:column headerText="Id">
-                        <h:outputText value="#{incidente.id}" />
-                    </p:column>
+ 
+                <h:outputText value="#{inc.problema}" />
+ 
+                <p:commandLink update=":form:incDetail" oncomplete="PF('incDialog').show()" title="Detalhes">
+                    <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+                    <f:setPropertyActionListener value="#{inc}" target="#{incidenteBean.incidente}" />
+                </p:commandLink>
+            </h:panelGrid>
+        </p:panel>
+            
+    </p:dataGrid>
+ 
+    <p:dialog header="Detalhe" widgetVar="incDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+        <p:outputPanel id="incDetail" style="text-align:center;">
+<p:panelGrid  columns="2" rendered="#{not empty incidenteBean.incidente}" columnClasses="label,value">
+                <f:facet name="header">
+                     <h:outputText value="#{inc.descricao}" />
+                </f:facet>
+ 
+                <h:outputText value="Id:" />
+                <h:outputText value="#{incidenteBean.incidente.id}" />
+ 
+                <h:outputText value="Contato" />
+                <h:outputText value="#{incidenteBean.incidente.contato}" />
+ 
+                <h:outputText value="Secretaria" />
+                <h:outputText value="#{incidenteBean.incidente.secretaria}" />
+ 
+                <h:outputText value="Setor" />
+                <h:outputText value="#{incidenteBean.incidente.setor}" />
+                
+             
 
-                    <p:column headerText="Problema">
-                        <h:outputText value="#{incidente.problema}" />
-                    </p:column>
+                <h:outputText value="Patrimonio" />
+                <h:outputText value="#{incidenteBean.incidente.patrimonio}" />
 
-                    <p:column headerText="Descrição">
-                        <h:outputText value="#{incidente.descricao}" />
-                    </p:column>
+                <h:outputText value="Data" />
+                <h:outputText value="#{incidenteBean.incidente.dataAbertura}" />
 
-                    <p:column headerText="Contato">
-                        <h:outputText value="#{incidente.contato}" />
-                    </p:column>
+                <h:outputText value="Status" />
+                <h:outputText value="#{incidenteBean.incidente.situacao}" />
+
+
+            </p:panelGrid>
+        </p:outputPanel>
+    </p:dialog>
+            </h:form>
                     
-                     <p:column headerText="Secretaria">
-                        <h:outputText value="#{incidente.secretaria}" />
-                    </p:column>
-
-                    <p:column headerText="Setor">
-                        <h:outputText value="#{incidente.setor}" />
-                    </p:column>
-
-                    <p:column headerText="Telefone">
-                        <h:outputText value="#{incidente.telefone}" />
-                    </p:column>
+                  
                     
-                     <p:column headerText="Problema">
-                        <h:outputText value="#{incidente.problema}" />
-                    </p:column>
                     
-                    <p:column headerText="Patrimônio">
-                        <h:outputText value="#{incidente.patrimonio}" />
-                    </p:column>
-
-                    <p:column headerText="Data">
-                        <h:outputText value="#{incidente.dataAbertura}" />
-                    </p:column>
-                    
-                     <p:column headerText="Status">
-                        <h:outputText value="#{incidente.situacao}" />
-                    </p:column>
-
-                    
-                </p:dataTable>
-                </div>
-                </div>
+             
+            
                 
                 
             </ui:define>
             
             
-            
-        </ui:composition> 
-    </h:body>
+      
+        </ui:composition>
+           
+        
+        
+        </h:body>
 </html>
 

@@ -5,7 +5,7 @@
  */
 package DAO;
 
-import Classes.Recurso;
+import Model.Recurso;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.persistence.EntityManager;
@@ -15,10 +15,10 @@ import javax.persistence.TypedQuery;
  *
  * @author Cristhofer
  */
-@ManagedBean(name="recursoDAO")
-public class RecursoDAO {
+
+public class RecursoDAO extends BaseDAO<Recurso>{
     
-     private EntityManager em;
+    /* private EntityManager em;
 
     public RecursoDAO() {}
 
@@ -77,6 +77,6 @@ public class RecursoDAO {
     }
             
 
-
+*/
     
 }

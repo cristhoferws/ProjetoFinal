@@ -36,15 +36,15 @@
                                             <p:growl autoUpdate="true"/>
                                             <div class="row">
                                                 <div class="col s12 input-field">
-                                                    <h:inputText id="username" required="true" value= "#{login.username}" requiredMessage="Nome inválido" />
+                                                    <h:inputText id="username" required="true" value= "#{loginBean.usuario.nome}" requiredMessage="Nome inválido" />
                                                     <h:outputLabel for="username" value="Nome de Usuário" />
                                                 </div> 
                                                 <div class="col s12 input-field">
-                                                    <h:inputText id="password" required="true" value= "#{login.password}" requiredMessage="Senha inválida" />
+                                                    <h:inputText id="password" required="true" value= "#{loginBean.usuario.senha}" requiredMessage="Senha inválida" />
                                                     <h:outputLabel for="password" value="Senha" />
                                                 </div> 
                                                 <div class="col s12 input-field">
-                                                    <h:commandLink value="Login" styleClass="btn btn-large red accent-1" action="#{login.autenticar()}" />
+                                                    <h:commandLink value="Login" styleClass="btn btn-large red accent-1" action="#{loginBean.envia()}" />
                                                 </div>
                                             </div>                                                                                            
                                         </h:form>

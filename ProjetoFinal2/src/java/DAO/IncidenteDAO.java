@@ -5,20 +5,17 @@
  */
 package DAO;
 
-import Classes.Incidente;
+import Model.Incidente;
 import java.util.List;
-import javax.faces.bean.ManagedBean;
 import javax.persistence.*;
 
 /**
  *
  * @author Cristhofer
  */
-
-@ManagedBean( name="incidenteDAO")
-public class IncidenteDAO {
+public class IncidenteDAO extends BaseDAO <Incidente> {
     
-    
+    /*
     private EntityManager em;
     
     public IncidenteDAO(){}
@@ -81,7 +78,6 @@ public class IncidenteDAO {
         return incidentes.get(0);
     }
 
- 
- 
+ */
     
 }
